@@ -4,6 +4,8 @@ Automated Plant Irrigation System Using NodeMCU ESP-8266 and Blynk IoT Cloud Ser
 
 ### Following are the required components/parts list: 
 
+Click this link for Images : https://github.com/MiLKG4NG/Plant-Irrigation-System-NodeMCU-ESP-8266-/tree/main/Requirments
+
 1. ESP-8266
 2. Soil Moisture Sensor
 3. Mini 5V-AC/DC Waterpump
