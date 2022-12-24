@@ -16,3 +16,6 @@ Automated Plant Irrigation System Using NodeMCU ESP-8266 and Blynk IoT Cloud Ser
 1. Arduino IDE
 2. ESP-8266 Community
 3. Blynk IoT
+
+
+By Using **NodeMCU ESP-8266** I have created A plant irrigation system, and with the help of **Blynk IoT Cloud Service** it can easliy be monitored.
