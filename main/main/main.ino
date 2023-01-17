@@ -21,6 +21,7 @@
 //const int sensor_pin = A0;
 int moisture_percentage;
 
+// Blynk LED Writing
 BLYNK_WRITE(V0)
 {
   if(param.asInt()==0){
@@ -30,10 +31,13 @@ BLYNK_WRITE(V0)
   }
 }
 
+// Cloud Connection
 BLYNK_CONNECTED(){
   Blynk.syncVirtual(V0);
   Blynk.virtualWrite(V1, moisture_percentage);
 }
+
+
 void setup()
 {
   pinMode(2, OUTPUT);
@@ -44,23 +48,7 @@ void setup()
 }
 
 void loop() {
-
   moisture_percentage = ( 100.00 - ( (analogRead(A0)/1023.00) * 100.00 ) );
-
-  /*Serial.print("\nSoil Moisture(in Percentage) = ");
-  Serial.print(moisture_percentage);
-  Serial.println("%");
-  delay(1000);
-  
-  if (moisture_percentage >= 20) {
-  digitalWrite(D4, true);
-  delay(1000);
-  digitalWrite(D4, false);
-  delay(1000);
-  }else{
-    digitalWrite(D4, false);
-  }*/
-  
   BlynkEdgent.run();
 }
 
