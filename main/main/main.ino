@@ -18,17 +18,21 @@
 
 #include "BlynkEdgent.h"
 
-BLYNK_WRITE(V0)
+const int sensor_pin = A0;
+double moisture_percentage;
+
+/* BLYNK_WRITE(V0)
 {
   if(param.asInt()==0){
   digitalWrite(2, HIGH);
   }else{
     digitalWrite(2, LOW);
   }
-}
+} */
 
 BLYNK_CONNECTED(){
-  Blynk.syncVirtual(V0);
+  Blynk.syncAll();
+  Blynk.virtualWrite(V1, moisture_percentage);
 }
 void setup()
 {
@@ -40,6 +44,23 @@ void setup()
 }
 
 void loop() {
+
+  moisture_percentage = ( 100.00 - ( (analogRead(sensor_pin)/1023.00) * 100.00 ) );
+
+  Serial.print("\nSoil Moisture(in Percentage) = ");
+  Serial.print(moisture_percentage);
+  Serial.println("%");
+  delay(1000);
+  
+  if (moisture_percentage >= 20) {
+  digitalWrite(D4, true);
+  delay(1000);
+  digitalWrite(D4, false);
+  delay(1000);
+  }else{
+    digitalWrite(D4, false);
+  }
+  
   BlynkEdgent.run();
 }
 
